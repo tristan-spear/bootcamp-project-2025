@@ -307,7 +307,7 @@ body {
 }
 
 .blog-post {
-  border: rgb(167, 167, 167) solid 3px;
+  border: rgb(255, 255, 255) solid 2px;
   border-radius: 10px;
   background-color: rgb(167, 167, 167);
   width: 350px;
@@ -320,7 +320,7 @@ body {
 
   p {
     text-indent: 2em;
-    margin: 10px 7px;
+    margin: 10px 10px;
   }
 
   h1 {
@@ -337,7 +337,39 @@ body {
 }
 
 .blog-post:hover {
-  width: 410px;
-  height: 510px;
+  width: 408px;
+  height: 506px;
   margin: 0px;
+  border-color: rgb(171, 98, 255);
+  border-width: 3px;
+}
+
+.blog-page-container {
+  .inner-post {
+    width: 70%;
+    margin: 100px 15%;
+    height: 700px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgb(167, 167, 167);
+    border: solid white 3px;
+    border-radius: 20px;
+
+    p {
+      margin: 0px 15px;
+    }
+  }
+
+  img {
+    max-width: 80%;
+    max-height: 400px;
+    border: white solid 2px;
+    border-radius: 10px;
+  }
+
+  .date {
+    text-decoration: underline;
+  }
 }
