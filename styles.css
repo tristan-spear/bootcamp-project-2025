@@ -296,9 +296,11 @@ body {
 }
 
 .post-container {
-  height: 65%;
-  width: 100%;
+  /* height: 65%; */
+  width: 70%;
+  margin: 0% 15%;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   margin-top: 0px;
@@ -308,13 +310,34 @@ body {
   border: rgb(167, 167, 167) solid 3px;
   border-radius: 10px;
   background-color: rgb(167, 167, 167);
-  width: 240px;
-  height: 350px;
+  width: 350px;
+  height: 450px;
   margin: 30px;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+
+  p {
+    text-indent: 2em;
+    margin: 10px 7px;
+  }
+
+  h1 {
+    text-align: center;
+  }
+
+  img {
+    max-width: 90%;
+    max-height: 250px;
+    margin: 0% 5%;
+    border: white solid 1px;
+    border-radius: 5px;
+  }
 }
 
 .blog-post:hover {
-  width: 300px;
-  height: 410px;
+  width: 410px;
+  height: 510px;
   margin: 0px;
 }
