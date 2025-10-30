@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 :root {
   /* variables */
   --cg-black: rgb(0, 0, 0);
@@ -29,7 +31,7 @@ html {
 }
 
 body {
-  background: rgb(40, 40, 40);
+  background: rgb(12, 12, 12);
   position: relative;
   min-height: 100vh;
   padding: 0;
@@ -193,6 +195,7 @@ main {
   background-color: rgb(40, 40, 40);
   border: 1px solid #ccc;
   border-radius: 5px;
+  margin: 10px 0px;
   /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
 }
 
