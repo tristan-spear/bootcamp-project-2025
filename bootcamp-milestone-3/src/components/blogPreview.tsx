@@ -6,7 +6,6 @@ import Link from 'next/link';
 
 
 export default function BlogPreview(props: Blog) {
-  console.log("HERE YE : " + props.image);
   return (
     <div className={style.div}>
       <h3>{props.title}</h3>
@@ -14,16 +13,16 @@ export default function BlogPreview(props: Blog) {
         
 		<Image 
       src={props.image || "/images/headshot.jpg"} 
-      alt={props.imageAlt} 
+      alt={props.imageAlt || "image alt"} 
       width={0}
       height={100}
       sizes="100vw"
       style={{ width: "auto", height: "200px" }}
     ></Image>
 
-	    {/* <p>{props.date}</p>      */}
+	    <p>{props.date.toLocaleString()}</p>     
       <p>{props.description}</p>
-      {/* <Link href={props.slug} ><p className='.link' style={{color: "aquamarine", textDecoration: "underline", fontWeight: "bold", textIndent: "0"}}>Read More...</p></Link> */}
+      <Link href={props.slug} ><p className='.link' style={{color: "aquamarine", textDecoration: "underline", fontWeight: "bold", textIndent: "0"}}>Read More...</p></Link>
       </div>
 	</div>
   );

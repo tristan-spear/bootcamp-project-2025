@@ -1,8 +1,9 @@
 import React from 'react';
-import blogs from '@/app/blogData';
+import getBlogs from '@/app/blogData';
 import Image from 'next/image';
 import Link from 'next/link';
 import style from './page.module.css';
+import type {Blog} from '@/database/blogSchema';
 
 interface PostSlug {
     params: {
@@ -10,8 +11,10 @@ interface PostSlug {
     }
 }
 
+const blogs: Blog[] = await getBlogs();
+
 export default function BlogPost({ params } : PostSlug) {
-    const post = blogs.find((blog) => (blog.slug) == "blog/" + params.slug);
+    const post: Blog | undefined = blogs.find((blog) => (blog.slug) == "blog/" + params.slug);
 
     if(!post)
         return(<h1>{params.slug}</h1>);
@@ -26,7 +29,7 @@ export default function BlogPost({ params } : PostSlug) {
         
 		<Image 
             src={post.image} 
-            alt={post.imgAlt} 
+            alt={post.imageAlt || "image alt"} 
             width={0}
             height={100}
             sizes="100vw"

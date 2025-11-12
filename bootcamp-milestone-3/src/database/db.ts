@@ -19,9 +19,7 @@ let connection: typeof mongoose;
 const connectDB = async () => {
   try {
     await mongoose.connect(url);
-    console.log("✅ Connected to MongoDB");
   } catch (err) {
-    console.error("❌ MongoDB connection error:", err);
   }
 };
 

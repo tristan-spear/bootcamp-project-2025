@@ -15,7 +15,7 @@ async function getBlogs(){
 	await connectDB() // function from db.ts before
 	try {
 			// query for all blogs and sort by date
-	    const blogs = await Blog.find().sort({ date: -1 })//.orFail()
+	    const blogs = await Blog.find().sort({ date: -1 }).orFail()
 			// send a response as the blogs as the message
 	    return JSON.parse(JSON.stringify(blogs));
 	} catch (err) {
@@ -23,17 +23,6 @@ async function getBlogs(){
 	    return null
 	}
 }
-
-// async function getBlogs() {
-//   try {
-//     await connectDB();
-//     const blogs = await Blog.find().lean(); // ✅ returns plain JS objects
-//     return JSON.parse(JSON.stringify(blogs)); // ✅ removes Mongoose metadata
-//   } catch (err) {
-//     console.error("Error fetching blogs:", err);
-//     return null;
-//   }
-// }
 
 // const blogs = getBlogs()
 
