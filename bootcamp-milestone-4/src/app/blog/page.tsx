@@ -6,7 +6,7 @@ import type { Blog } from '@/database/blogSchema';
 export default async function BlogPage() {
 
     const blogs = await getBlogs();
-    if(!blogs) return <div>Failed to load blogs.</div>
+    if(!blogs) return (<div>Failed to load blogs.</div>);
 
     console.log(blogs)
 

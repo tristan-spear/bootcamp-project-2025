@@ -12,7 +12,7 @@ export async function POST(
     try {
         await connectDB();
         const body = await req.json();
-        const { slug } = await params;
+        const { slug } = await params.id;
         // validate body
         if (!body || !body.user || !body.text) {
             return NextResponse.json("Missing fields", {status : 400});

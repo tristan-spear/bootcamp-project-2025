@@ -29,6 +29,8 @@ export default function ProjectCommentForm({ proj } : formProps ) {
     async function postComment(params : React.FormEvent) {
         params.preventDefault();
 
+        const stringId = JSON.stringify(proj._id);
+
         try {
             const res = await fetch(`/api/Portfolio/${proj._id}`, {
                 method: "POST",
