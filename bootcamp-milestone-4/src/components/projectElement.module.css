@@ -1,0 +1,36 @@
+.div {
+  border: rgb(255, 255, 255) solid 2px;
+  border-radius: 10px;
+  background-color: rgb(167, 167, 167);
+  width: 600px;
+  /* height: 400px;  */
+  margin: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  p {
+    text-indent: 2em;
+    margin: 10px 10px;
+    font-size: 12px;
+  }
+
+  h1 {
+    text-align: center;
+  }
+
+  img {
+    max-width: 90%;
+    max-height: 400px;
+    margin: 0% 5%;
+    border: white solid 1px;
+    border-radius: 5px;
+  }
+  
+  .link {
+    text-decoration: underline;
+    font-size: 15px;
+    color: aquamarine;
+  }
+}
