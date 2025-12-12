@@ -7,7 +7,7 @@
         <div style={{display: "flex", flexDirection: "row", justifyContent: "center", alignItems: "center", margin: "80px"}}>
           <div style={{marginTop:"20px", marginRight: "80px", display:"flex",flexDirection: "column", justifyContent: "start", alignItems: "start",}}>
             <h1 className="page-title">Tristan Spear</h1>
-            <p>Hi, I'm <strong>Tristan</strong>, I am a Junior, studying<br />Software Engineering at Cal Poly SLO 🐎</p>
+            <p>Hi, I&apos;m <strong>Tristan</strong>, I am a Junior, studying<br />Software Engineering at Cal Poly SLO 🐎</p>
           </div>
           
           <img src="./images/headshot2.jpg" alt="An image of a sunset in pismo beach" style={{height: "250px", marginTop: "20px", border: "white solid 2px", borderRadius: "50%", marginLeft: "80px"}}/>
