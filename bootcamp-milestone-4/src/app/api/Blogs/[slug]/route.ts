@@ -21,9 +21,7 @@ import blogSchema from "@/database/blogSchema"
    /api/blog/[slug]/route.ts creates { params: { slug: "actual-slug-value" } }
 */
 type IParams = {
-		params: Promise<{
-			slug: string
-		}>
+		params: { slug: string } | Promise<{ slug: string }>
 }
 
 /*
@@ -42,7 +40,12 @@ export async function GET(req: NextRequest, { params }: IParams) {
 		// If { params } looks confusing, check the note below this code block
 		
     await connectDB() // function from db.ts before
-		const { slug } = await params // params are now a Promise in Next.js 15 route handlers
+		const resolvedParams = await params
+		const slug = resolvedParams?.slug
+
+		if (!slug) {
+			return NextResponse.json('Missing slug', { status: 400 })
+		}
 
 	   try {
 	        const Blog = await blogSchema.findOne({ slug }).orFail()

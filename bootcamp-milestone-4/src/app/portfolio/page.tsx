@@ -3,6 +3,9 @@ import React from 'react';
 import getProjects from '@/app/projectData';
 import type { Project } from '@/database/projectSchema';
 
+// Always render dynamically to show latest comments/projects
+export const revalidate = 0;
+
 export default async function portfolio() {
 
     const projects = await getProjects();

@@ -7,11 +7,16 @@ export const dynamic = 'force-dynamic';
 
 export async function POST(
   req: NextRequest,
-  { params }: { params: Promise<{ id: string }> }
+  { params }: { params: { id: string } | Promise<{ id: string }> }
 ) {
   await connectDB();
   const body = await req.json();
-  const { id } = await params; // <-- await the params Promise
+  const resolvedParams = await params;
+  const id = resolvedParams?.id;
+
+  if (!id) {
+    return NextResponse.json({ error: "Missing id" }, { status: 400 });
+  }
 
   if (!body?.user || !body?.text) {
     return NextResponse.json("Missing fields", { status: 400 });

@@ -7,6 +7,9 @@ import type {Blog} from '@/database/blogSchema';
 import Comment from '@/components/comment';
 import CommentForm from '@/components/blogCommentForm';
 
+// Render dynamically so new comments appear immediately
+export const revalidate = 0;
+
 export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params;
     const blogs: Blog[] = await getBlogs();

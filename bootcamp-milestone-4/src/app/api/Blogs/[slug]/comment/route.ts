@@ -6,15 +6,17 @@ export const dynamic = 'force-dynamic';
 
 export async function POST(
     req: NextRequest,
-    //{ params }: { params: Promise<{ slug: string }> }
-    {params} : any
-) 
-{
-	
+    { params }: { params: { slug: string } | Promise<{ slug: string }> }
+) {
     try {
         await connectDB();
         const body = await req.json();
-        const { slug } = await params.id;
+        const resolvedParams = await params;
+        const slug = resolvedParams?.slug;
+
+        if (!slug) {
+            return NextResponse.json({ error: "Missing slug" }, { status: 400 });
+        }
         // validate body
         if (!body || !body.user || !body.text) {
             return NextResponse.json("Missing fields", {status : 400});

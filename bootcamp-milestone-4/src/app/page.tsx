@@ -1,5 +1,8 @@
 //import
 
+// Ensure this page is always dynamic (no cached data)
+export const revalidate = 0;
+
  export default function Home() {
   return (
     <div>
@@ -14,8 +17,7 @@
         </div>
           
       <About />
-      <About />
-      <About />
+      
 
       </main>
       </div>
