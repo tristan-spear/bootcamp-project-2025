@@ -8,7 +8,7 @@ type reqParams = {
 
 export async function POST(
     req: NextRequest,
-     {params}: {params:{slug:string}}
+     {params}: any
 ) 
 {
 	

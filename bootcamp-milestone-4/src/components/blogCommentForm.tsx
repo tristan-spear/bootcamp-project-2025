@@ -46,6 +46,9 @@ export default function CommentForm({ post } : formProps ) {
             }
 
             router.refresh();
+
+            setUser("");
+            setText("");
             }
             catch(err) {
                 console.log(err);
