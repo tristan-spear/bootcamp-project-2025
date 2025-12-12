@@ -48,6 +48,9 @@ export default function ProjectCommentForm({ proj } : formProps ) {
             }
 
             router.refresh();
+
+            setUser("");
+            setText("");
             }
             catch(err) {
                 console.log(err);
