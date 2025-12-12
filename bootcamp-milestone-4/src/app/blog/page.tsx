@@ -1,6 +1,7 @@
 import BlogPreview from '@/components/blogPreview';
 import React from 'react';
 import getBlogs from '@/app/blogData';
+import type { Blog } from '@/database/blogSchema';
 
 export default async function BlogPage() {
 
@@ -9,7 +10,7 @@ export default async function BlogPage() {
 
     console.log(blogs)
 
-    const blogElements =  blogs.map((blog) => 
+    const blogElements =  blogs.map((blog: Blog) => 
             <BlogPreview key={blog._id} {...blog} />
     );
     

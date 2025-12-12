@@ -1,14 +1,15 @@
 import ProjectElement from '@/components/projectElement';
 import React from 'react';
 import getProjects from '@/app/projectData';
+import type { Project } from '@/database/projectSchema';
 
 export default async function portfolio() {
 
     const projects = await getProjects();
     if(!projects) return <div>Failed to load Projects.</div>
 
-    const ProjectElements =  projects.map((project) => 
-            <ProjectElement key={project._id} {...project} />
+    const ProjectElements =  projects.map((project : Project) => 
+            <ProjectElement key={project.title} {...project} />
     );
     
     return (
