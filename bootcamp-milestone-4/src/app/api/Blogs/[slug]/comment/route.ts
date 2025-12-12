@@ -4,7 +4,8 @@ import Blogs from "@/database/blogSchema";
 
 export async function POST(
     req: NextRequest,
-    { params }: { params: Promise<{ slug: string }> }
+    //{ params }: { params: Promise<{ slug: string }> }
+    {params} : any
 ) 
 {
 	
