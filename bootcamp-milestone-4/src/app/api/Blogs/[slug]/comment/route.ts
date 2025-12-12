@@ -2,20 +2,16 @@ import { NextRequest, NextResponse } from 'next/server'
 import connectDB from "@/database/db"
 import Blogs from "@/database/blogSchema";
 
-type reqParams = {
-    slug: string;
-}
-
 export async function POST(
     req: NextRequest,
-     {params}: any
+    { params }: { params: Promise<{ slug: string }> }
 ) 
 {
 	
     try {
         await connectDB();
         const body = await req.json();
-        const slug = params.slug;
+        const { slug } = await params;
         // validate body
         if (!body || !body.user || !body.text) {
             return NextResponse.json("Missing fields", {status : 400});

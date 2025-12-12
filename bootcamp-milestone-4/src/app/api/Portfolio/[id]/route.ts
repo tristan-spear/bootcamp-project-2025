@@ -1,15 +1,16 @@
 import { NextRequest, NextResponse } from 'next/server'
 import connectDB from "@/database/db"
 import Projects from "@/database/projectSchema";
-import { stat } from 'fs';
-import { projectUpdate } from 'next/dist/build/swc/generated-native';
 
-export async function POST(req: NextRequest, {params}:{params: {id:string}}) {
+export async function POST(
+	req: NextRequest,
+	{ params }: { params: Promise<{ id: string }> }
+) {
 	
     try {
         await connectDB();
         const body = await req.json();
-        const {id} = await params
+        const { id } = await params;
         // validate body
         if (!body || !body.user || !body.text) {
             return NextResponse.json("Missing fields", {status : 400});
