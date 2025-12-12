@@ -5,21 +5,15 @@ import Link from 'next/link';
 import style from './page.module.css';
 import type {Blog} from '@/database/blogSchema';
 import Comment from '@/components/comment';
-import type {IComment} from '@/database/blogSchema';
 import CommentForm from '@/components/blogCommentForm';
 
-interface PostSlug {
-    params: {
-        slug: string;
-    }
-}
-
-export default async function BlogPost({ params }: { params: { slug: string } }) {
+export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
+    const { slug } = await params;
     const blogs: Blog[] = await getBlogs();
-    const post: Blog | undefined = blogs.find((blog) => (blog.slug) == "blog/" + params.slug);
+    const post: Blog | undefined = blogs.find((blog) => (blog.slug) == "blog/" + slug);
 
     if(!post)
-        return(<h1>{params.slug}</h1>);
+        return(<h1>{slug}</h1>);
 
 
     {console.log(post.comments)}
