@@ -3,6 +3,8 @@ import connectDB from "@/database/db"
 import Projects from "@/database/projectSchema";
 import { Schema } from 'mongoose';
 
+export const dynamic = 'force-dynamic';
+
 export async function POST(
   req: NextRequest,
   { params }: { params: Promise<{ id: string }> }
