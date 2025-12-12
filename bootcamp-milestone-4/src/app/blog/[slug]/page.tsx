@@ -7,6 +7,7 @@ import type {Blog} from '@/database/blogSchema';
 import Comment from '@/components/comment';
 import type {IComment} from '@/database/blogSchema';
 import CommentForm from '@/components/blogCommentForm';
+import PageProps from "next";
 
 interface PostSlug {
     params: {
@@ -14,7 +15,7 @@ interface PostSlug {
     }
 }
 
-export default async function BlogPost({ params } : PostSlug) {
+export default async function BlogPost({ params }: { params: { slug: string } }) {
     const blogs: Blog[] = await getBlogs();
     const post: Blog | undefined = blogs.find((blog) => (blog.slug) == "blog/" + params.slug);
 
