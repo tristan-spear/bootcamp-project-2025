@@ -3,16 +3,15 @@ import connectDB from "@/database/db"
 import Blogs from "@/database/blogSchema";
 
 export async function POST(
-        req: NextRequest, 
-        context:{params: {slug:string}}
-    ) 
+    req: NextRequest,
+    { params }: { params: { slug: string } }
+) 
 {
 	
     try {
         await connectDB();
         const body = await req.json();
-        const argument = await context.params.slug;
-        const slug = argument;
+        const slug = params.slug;
         // validate body
         if (!body || !body.user || !body.text) {
             return NextResponse.json("Missing fields", {status : 400});
