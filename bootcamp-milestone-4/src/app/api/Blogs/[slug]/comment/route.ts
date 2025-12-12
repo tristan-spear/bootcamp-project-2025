@@ -2,12 +2,17 @@ import { NextRequest, NextResponse } from 'next/server'
 import connectDB from "@/database/db"
 import Blogs from "@/database/blogSchema";
 
-export async function POST(req: NextRequest, context:{params: {slug:string}}) {
+export async function POST(
+        req: NextRequest, 
+        context:{params: {slug:string}}
+    ) 
+{
 	
     try {
         await connectDB();
         const body = await req.json();
-        const {slug} = context.params;
+        const argument = await context.params.slug;
+        const slug = argument;
         // validate body
         if (!body || !body.user || !body.text) {
             return NextResponse.json("Missing fields", {status : 400});
@@ -20,7 +25,7 @@ export async function POST(req: NextRequest, context:{params: {slug:string}}) {
         }
 
         const updatedBlog = await Blogs.findOneAndUpdate(
-            { slug : {slug} }, 
+            { slug }, 
             { $push : { comments : newComment }},
             { new : true }
         );
