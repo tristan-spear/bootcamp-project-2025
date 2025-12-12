@@ -1,70 +1,70 @@
-import React from 'react';
-import Link from 'next/link';
-
+import React from "react";
+import Link from "next/link";
+import styles from "./page.module.css";
 
 export default function Resume() {
-    return (
-        <main>
-      <h1 className="page-title">Resume</h1>
-      <Link href="./Spear, Tristan - Resume - Oct 2025 copy.pdf" style={{color: "white", backgroundColor: "rgb(129, 225, 225)", borderRadius: "5px", padding: "5px",}} download>download resume</Link>
-      <div className="resume">
-        <section className="section">
-          <h2 className="section-title">Education</h2>
-          <br/>
-          <div className="entry">
-            <h3 className="entry-title">B.S. Software Engineering</h3>
-            <p className="entry-info">Cal Poly, San Luis Obispo | Expected Graduation May 2027</p>
-            <br/>
-            <h3 className="entry-title">A.S. Computer Science, A.S. Mathematics</h3>
-            <p className="entry-info">Cuesta College | Graduation May 2025</p>
-            <br/>
+  return (
+    <div className="page">
+      <header className="section">
+        <span className="eyebrow">Resume</span>
+        <h1 className="headline">Experience, education, and skills at a glance</h1>
+        <p className="muted">
+          A concise snapshot of my background—pairing strong fundamentals with a passion for building calm, modern
+          products.
+        </p>
+        <Link className="btn" href="./Spear, Tristan - Resume - Oct 2025 copy.pdf" download>
+          Download resume
+        </Link>
+      </header>
+
+      <div className={styles.columns}>
+        <section className="panel">
+          <h3>Education</h3>
+          <div className={styles.entry}>
+            <h4>B.S. Software Engineering</h4>
+            <p className="muted">Cal Poly, San Luis Obispo — Expected May 2027</p>
+          </div>
+          <div className={styles.entry}>
+            <h4>A.S. Computer Science & Mathematics</h4>
+            <p className="muted">Cuesta College — May 2025</p>
           </div>
         </section>
-        <section className="section">
-          <h2 className="section-title">Experience</h2>
-          <br/>
-          <div className="entry">
-            <h3 className="entry-title">Academic Tutor</h3>
-            <p className="entry-info">Cuesta College | January 2024 - May 2025</p>
-            <br/>
-            <p className="entry-description">
-              -Tutored for all computer science and math classNamees<br/>
-              -Used communication and explanation skills to help other students succeed in their classNamees and reach their academic goals<br/>
-              -Helped students reach a firm understanding of course material, and navigate specific problems, on their own with my
-               guidance, rather than simply telling them the answers
-            </p>
-            <br/>
+
+        <section className="panel">
+          <h3>Experience</h3>
+          <div className={styles.entry}>
+            <h4>Academic Tutor</h4>
+            <p className="muted">Cuesta College — Jan 2024 to May 2025</p>
+            <ul className={styles.list}>
+              <li>Supported students across CS and mathematics with clear, patient guidance.</li>
+              <li>Encouraged independent problem-solving and deep understanding over quick answers.</li>
+            </ul>
           </div>
         </section>
-        <section className="section">
-          <h2 className="section-title">Projects</h2>
-          <br/>
-          <div className="entry">
-            <h3 className="entry-title">Personal Website</h3>
-            <br/>
-            <p className="entry-info">Created a personal website using html and css</p>
-            <br/>
-            <p className="entry-description">
-              -Site contained multiple pages<br/>
-              -Created a contact page using an html form element
-            </p>
-            <br/>
+
+        <section className="panel">
+          <h3>Projects</h3>
+          <div className={styles.entry}>
+            <h4>Personal Website</h4>
+            <p className="muted">Crafted a multi-page portfolio site focused on clarity and performance.</p>
+            <ul className={styles.list}>
+              <li>Built responsive layouts with modern CSS and semantic HTML.</li>
+              <li>Created a contact experience with form handling and validation.</li>
+            </ul>
           </div>
         </section>
-        <section className="section">
-          <h2 className="section-title">Skills</h2>
-          <div className="entry">
-            <h3 className="entry-title"></h3>
-            <p className="entry-info"></p>
-            <br/>
-            <p className="entry-description">
-              -html<br/>
-              -css
-            </p>
-            <br/>
+
+        <section className="panel">
+          <h3>Skills</h3>
+          <div className={styles.tags}>
+            <span className="pill">TypeScript</span>
+            <span className="pill">React / Next.js</span>
+            <span className="pill">UI/UX</span>
+            <span className="pill">CSS Architecture</span>
+            <span className="pill">Accessibility</span>
           </div>
         </section>
       </div>
-    </main>
-    );
+    </div>
+  );
 }

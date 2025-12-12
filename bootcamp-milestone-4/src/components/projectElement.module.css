@@ -1,36 +1,92 @@
-.div {
-  border: rgb(255, 255, 255) solid 2px;
-  border-radius: 10px;
-  background-color: rgb(167, 167, 167);
-  width: 600px;
-  /* height: 400px;  */
-  margin: 50px;
+.card {
+  display: grid;
+  grid-template-columns: minmax(260px, 320px) 1fr;
+  gap: 1.4rem;
+  padding: 1.25rem;
+  border-radius: 18px;
+  background: var(--panel-surface);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-soft);
+  position: relative;
+  overflow: hidden;
+}
+
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(107, 232, 255, 0.04), rgba(124, 58, 237, 0.04));
+  pointer-events: none;
+}
+
+.media {
+  position: relative;
+  width: 100%;
+  min-height: 220px;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: var(--glow-strong);
+}
+
+.media img,
+.media :global(img) {
+  object-fit: cover;
+  transition: transform 200ms ease;
+}
+
+.card:hover .media img {
+  transform: scale(1.02);
+}
+
+.content {
+  position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  gap: 0.75rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
+  gap: 1rem;
+}
 
-  p {
-    text-indent: 2em;
-    margin: 10px 10px;
-    font-size: 12px;
+.link {
+  color: var(--text-primary);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.metaRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.commentsBlock {
+  margin-top: 0.75rem;
+  padding: 0.75rem;
+  border-radius: 12px;
+  background: var(--panel-strong);
+  border: 1px solid var(--border);
+}
+
+.commentHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+@media (max-width: 800px) {
+  .card {
+    grid-template-columns: 1fr;
   }
 
-  h1 {
-    text-align: center;
-  }
-
-  img {
-    max-width: 90%;
-    max-height: 400px;
-    margin: 0% 5%;
-    border: white solid 1px;
-    border-radius: 5px;
-  }
-  
-  .link {
-    text-decoration: underline;
-    font-size: 15px;
-    color: aquamarine;
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }

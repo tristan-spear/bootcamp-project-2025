@@ -1,29 +1,28 @@
-import React from 'react';
-import style from './blogPreview.module.css';
-import Image from 'next/image';
-import type {Blog} from "@/database/blogSchema"; // importing the type/interface we defined earlier
-import Link from 'next/link';
-
+import React from "react";
+import Image from "next/image";
+import Link from "next/link";
+import type { Blog } from "@/database/blogSchema";
+import styles from "./blogPreview.module.css";
 
 export default function BlogPreview(props: Blog) {
   return (
-    <div className={style.div}>
-      <h3>{props.title}</h3>
-      <div>
-        
-		<Image 
-      src={props.image || "/images/headshot.jpg"} 
-      alt={props.imageAlt || "image alt"} 
-      width={0}
-      height={100}
-      sizes="100vw"
-      style={{ width: "auto", height: "200px" }}
-    ></Image>
-
-	    <p>{props.date.toLocaleString()}</p>     
-      <p>{props.description}</p>
-      <Link href={props.slug} ><p className='.link' style={{color: "aquamarine", textDecoration: "underline", fontWeight: "bold", textIndent: "0"}}>Read More...</p></Link>
+    <article className={styles.card}>
+      <div className={styles.media}>
+        <Image
+          src={props.image || "/images/headshot.jpg"}
+          alt={props.imageAlt || "blog cover"}
+          fill
+          sizes="(max-width: 768px) 100vw, 340px"
+        />
       </div>
-	</div>
+      <div className={styles.body}>
+        <p className="card-meta">{new Date(props.date).toLocaleDateString()}</p>
+        <h3>{props.title}</h3>
+        <p className="muted">{props.description}</p>
+        <Link className={styles.link} href={props.slug}>
+          Read more →
+        </Link>
+      </div>
+    </article>
   );
 }

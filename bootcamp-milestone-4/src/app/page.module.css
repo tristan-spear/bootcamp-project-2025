@@ -1,0 +1,80 @@
+.hero {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.4rem;
+  margin-bottom: 2rem;
+}
+
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 0.5rem;
+}
+
+.avatar {
+  position: relative;
+  width: 100%;
+  min-height: 260px;
+  border-radius: 20px;
+  overflow: hidden;
+  background: linear-gradient(120deg, rgba(103, 232, 249, 0.08), rgba(124, 58, 237, 0.08));
+  border: 1px solid var(--border);
+  box-shadow: var(--glow-strong);
+}
+
+.avatar img,
+.avatar :global(img) {
+  object-fit: cover;
+  filter: saturate(1.05) contrast(1.02);
+}
+
+.glow {
+  position: absolute;
+  inset: -20%;
+  background: radial-gradient(circle at 30% 40%, rgba(107, 232, 255, 0.18), transparent 40%),
+    radial-gradient(circle at 70% 60%, rgba(124, 58, 237, 0.16), transparent 45%);
+  filter: blur(16px);
+  pointer-events: none;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.panelAccent {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 20% 30%, rgba(107, 232, 255, 0.08), transparent 45%);
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+.highlightRow {
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.highlightCard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  justify-content: space-between;
+}
+
+.linkArrow {
+  color: var(--text-primary);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+@media (max-width: 720px) {
+  .sectionHeader {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

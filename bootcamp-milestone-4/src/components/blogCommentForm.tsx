@@ -1,27 +1,19 @@
 "use client";
 
-import Link from "next/link";
 import Comment from "./comment";
-import type {IComment} from '@/database/blogSchema';
+import type { IComment } from "@/database/blogSchema";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import type { Blog } from "@/database/blogSchema";
 
-
-
-type commentArr = {
-    comments: IComment[];
-}
-
 type formProps = {
-    post : Blog
-}
+  post: Blog;
+};
 
-export default function CommentForm({ post } : formProps ) {
+export default function CommentForm({ post }: formProps) {
 
     const [user, setUser] = useState("");
     const [text, setText] = useState("");
-    const [day, setDay] = useState();
 
     const router = useRouter();
     const truncatedSlug = post.slug.slice(5, post.slug.length)
@@ -57,37 +49,38 @@ export default function CommentForm({ post } : formProps ) {
     }
 
     return (
-        <div className='bg-primary rounded' style={{backgroundColor: "darkBlue"}}>
-                <h5 style={{border: "1px solid white"}}>Comments:</h5>
-                <br />
-                {post.comments.map((comment: IComment, index) => (
-                        <Comment key={index} comment={comment} />
-	            ))}
-                <div style={{backgroundColor: "black"}}>
-                    <h6 style={{border: "1px solid white"}}>Add a comment:</h6>
-                    <br />
-                    <form onSubmit={postComment}>
-                        <label>Name:</label>
-                        <input
-                            type='text'
-                            value={user}
-                            onChange={(e) => setUser(e.target.value)}
-                            style={{ height: "30px" }}
-                        />
+        <div className="list">
+            {post.comments.map((comment: IComment, index) => (
+                <Comment key={index} comment={comment} />
+            ))}
+            <form onSubmit={postComment}>
+                <div>
+                    <label htmlFor="name">Name</label>
+                    <input
+                        id="name"
+                        className="input"
+                        type='text'
+                        value={user}
+                        onChange={(e) => setUser(e.target.value)}
+                        required
+                    />
+                </div>
 
-                        <label>Comment</label>
-                        <input
-                            type='text'
-                            value={text}
-                            onChange={(e) => setText(e.target.value)}
-                            style={{ height: "30px" }}
-                        />
-                        <button 
-                            type="submit" 
-                            style={{color: "white", backgroundColor: "rgb(129, 225, 225)", borderRadius: "5px", padding: "5px"}}
-                            >Submit</button>
-                    </form>
+                <div>
+                    <label htmlFor="comment">Comment</label>
+                    <textarea
+                        id="comment"
+                        value={text}
+                        onChange={(e) => setText(e.target.value)}
+                        rows={3}
+                        required
+                    />
                 </div>
-                </div>
+                <button 
+                    type="submit" 
+                    className="btn"
+                    >Submit comment</button>
+            </form>
+        </div>
     );
 }
