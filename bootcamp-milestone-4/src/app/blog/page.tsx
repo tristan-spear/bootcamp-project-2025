@@ -11,7 +11,7 @@ export default async function BlogPage() {
     console.log(blogs)
 
     const blogElements =  blogs.map((blog: Blog) => 
-            <BlogPreview key={blog._id} {...blog} />
+            <BlogPreview key={blog.title} {...blog} />
     );
     
     return (
